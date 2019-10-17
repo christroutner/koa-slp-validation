@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "npm run prep-test && KOA_ENV=test nyc --reporter=text ./node_modules/.bin/mocha --timeout 15000 --exit test/unit/",
+    "test:integration": "./node_modules/.bin/mocha --timeout 15000 --exit test/integration/",
     "lint": "eslint src/**/*.js",
     "docs": "./node_modules/.bin/apidoc -i src/ -o docs",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
