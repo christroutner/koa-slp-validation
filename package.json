@@ -33,6 +33,8 @@
   "dependencies": {
     "apidoc": "^0.17.7",
     "bcryptjs": "^2.4.3",
+    "bit.js": "0.0.11",
+    "bitcoin-rpc-promise-retry": "^1.3.0",
     "glob": "^7.0.0",
     "jsonwebtoken": "^8.3.0",
     "kcors": "^2.2.1",
@@ -49,6 +51,7 @@
     "passport-local": "^1.0.0",
     "request": "^2.85.0",
     "request-promise": "^4.2.2",
+    "slp-validate": "^1.0.0",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.0.0"
   },
