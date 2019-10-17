@@ -3,15 +3,18 @@
   https://github.com/simpleledger/slp-validate/blob/master/examples/1-validate-tx-rpc-burn-valid-stop.ts
 */
 
-// const util = require('util')
-// util.inspect.defaultOptions = { depth: 1 }
+const util = require('util')
+util.inspect.defaultOptions = { depth: 1 }
 
-// const slpValidate = require('slp-validate')
-// const ValidatorType1 = slpValidate.ValidatorType1
+const slpValidate = require('slp-validate')
+const ValidatorType1 = slpValidate.ValidatorType1
 // console.log(`ValidatorType1: ${util.inspect(ValidatorType1)}`)
 
-import { ValidatorType1 } from 'slp-validate'
-import { Big } from 'big.js'
+const Big = require('big.js')
+// console.log(`big: ${util.inspect(Big)}`)
+
+// import { ValidatorType1 } from 'slp-validate'
+// import { Big } from 'big.js'
 const RpcClient = require('bitcoin-rpc-promise-retry')
 
 const config = require('../../../config')
