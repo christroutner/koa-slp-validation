@@ -10,21 +10,22 @@ const slpValidate = require('slp-validate')
 const ValidatorType1 = slpValidate.ValidatorType1
 // console.log(`ValidatorType1: ${util.inspect(ValidatorType1)}`)
 
-const Big = require('big.js')
-// console.log(`big: ${util.inspect(Big)}`)
-
 // import { ValidatorType1 } from 'slp-validate'
 // import { Big } from 'big.js'
 const RpcClient = require('bitcoin-rpc-promise-retry')
 
 const config = require('../../../config')
 
-// let _this
+let _this
 
 class SLP {
   constructor () {
-    // _this = this
+    _this = this
     console.log('')
+
+    // Instantiate the RPC connection to the full node.
+    const connectionString = `http://${config.rpcUserName}:${config.rpcPassword}@${config.rpcUrl}`
+    this.rpc = new RpcClient(connectionString)
   }
 
   // Validates an SLP token TXID.
@@ -32,25 +33,31 @@ class SLP {
     try {
       const txid = ctx.params.txid
 
-      console.time('SLP-VALIDATE-RPC')
-      const connectionString = `http://${config.rpcUserName}:${config.rpcPassword}@${config.rpcUrl}`
-      const rpc = new RpcClient(connectionString)
-      const slpValidator = new ValidatorType1({ getRawTransaction: async (txid) => rpc.getRawTransaction(txid) })
-      console.log('This may take a several seconds...')
-      let isValid
+      // Track time of execution.
+      // console.time('SLP-VALIDATE-RPC')
+
+      // Instantiate the validator.
+      const slpValidator = new ValidatorType1({ getRawTransaction: async (txid) => await _this.rpc.getRawTransaction(txid) })
+
+      // console.log('This may take a several seconds...')
+
+      // false by default.
+      let isValid = false
+
       try {
-        isValid = await slpValidator.isValidSlpTxn({ txid, burnQuantity: Big(0) })
+        // Validate the txid.
+        isValid = await slpValidator.isValidSlpTxid({ txid })
       } catch (error) {
         console.log(error)
         isValid = false
       }
 
-      console.log('Final Result:', isValid)
-      console.log('NOTE: THIS IS A VALID SLP TRANSACTION, BUT WE CALL IT INVALID SINCE IT WAS BURNING INPUTS.')
-      console.timeEnd('SLP-VALIDATE-RPC')
+      // console.log('Final Result:', isValid)
+      // console.log('WARNING: THIS VALIDATION METHOD COMES WITH NO BURN PROTECTION.')
+      // console.timeEnd('SLP-VALIDATE-RPC')
 
       ctx.body = {
-        isValid: false
+        isValid: isValid
       }
     } catch (err) {
       if (err === 404 || err.name === 'CastError') {
