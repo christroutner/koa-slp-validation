@@ -24,12 +24,16 @@ class SLP {
     console.log('')
 
     // Instantiate the RPC connection to the full node.
-    const connectionString = `http://${config.rpcUserName}:${config.rpcPassword}@${config.rpcUrl}`
+    const connectionString = `http://${config.rpcUserName}:${
+      config.rpcPassword
+    }@${config.rpcUrl}`
     this.rpc = new RpcClient(connectionString)
   }
 
   // Validates an SLP token TXID.
   async validateTxid (ctx, next) {
+    console.log(`ctx: ${JSON.stringify(ctx, null, 2)}`)
+
     try {
       const txid = ctx.params.txid
 
@@ -37,7 +41,13 @@ class SLP {
       // console.time('SLP-VALIDATE-RPC')
 
       // Instantiate the validator.
-      const slpValidator = new ValidatorType1({ getRawTransaction: async (txid) => await _this.rpc.getRawTransaction(txid) })
+      const slpValidator = new ValidatorType1({
+        getRawTransaction: async txid => {
+          const rawTx = await _this.rpc.getRawTransaction(txid)
+          console.log(`rawTx: ${JSON.stringify(rawTx, null, 2)}`)
+          return rawTx
+        }
+      })
 
       // console.log('This may take a several seconds...')
 

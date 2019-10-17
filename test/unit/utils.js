@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const rp = require('request-promise')
-const config = require('../config')
+const config = require('../../config')
 
 const LOCALHOST = `http://localhost:${config.port}`
 
@@ -79,7 +79,7 @@ async function loginTestUser () {
 
 async function loginAdminUser () {
   try {
-    const FILENAME = `../config/system-user-${config.env}.json`
+    const FILENAME = `../../config/system-user-${config.env}.json`
     const adminUserData = require(FILENAME)
     console.log(`adminUserData: ${JSON.stringify(adminUserData, null, 2)}`)
 
@@ -117,7 +117,7 @@ async function getAdminJWT () {
     // process.env.KOA_ENV = process.env.KOA_ENV || 'dev'
     // console.log(`env: ${process.env.KOA_ENV}`)
 
-    const FILENAME = `../config/system-user-${config.env}.json`
+    const FILENAME = `../../config/system-user-${config.env}.json`
     const adminUserData = require(FILENAME)
     // console.log(`adminUserData: ${JSON.stringify(adminUserData, null, 2)}`)
 
