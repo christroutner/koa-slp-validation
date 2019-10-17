@@ -41,5 +41,25 @@ describe('SLP', () => {
 
       assert.equal(body.isValid, true)
     })
+
+    it('should return false for non-SLP txid', async () => {
+      const txid = '5f09d317e24c5d376f737a2711f3bd1d381abdb41743fff3819b4f76382e1eac'
+
+      const options = {
+        method: 'GET',
+        uri: `${LOCALHOST}/slp/validate/${txid}`,
+        resolveWithFullResponse: true,
+        json: true,
+        headers: {
+          Accept: 'application/json'
+        }
+      }
+
+      const result = await rp(options)
+      const body = result.body
+      // console.log(`body: ${JSON.stringify(body, null, 2)}`)
+
+      assert.equal(body.isValid, false)
+    })
   })
 })

@@ -32,7 +32,7 @@ class SLP {
 
   // Validates an SLP token TXID.
   async validateTxid (ctx, next) {
-    console.log(`ctx: ${JSON.stringify(ctx, null, 2)}`)
+    // console.log(`ctx: ${JSON.stringify(ctx, null, 2)}`)
 
     try {
       const txid = ctx.params.txid
@@ -44,7 +44,7 @@ class SLP {
       const slpValidator = new ValidatorType1({
         getRawTransaction: async txid => {
           const rawTx = await _this.rpc.getRawTransaction(txid)
-          console.log(`rawTx: ${JSON.stringify(rawTx, null, 2)}`)
+          // console.log(`rawTx: ${JSON.stringify(rawTx, null, 2)}`)
           return rawTx
         }
       })
