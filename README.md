@@ -79,5 +79,8 @@ Validate a very a more complex txid. This should return true:
 Validate a non-SLP transaction. This should return false:
 `curl -X GET http://localhost:5001/slp/validate/5f09d317e24c5d376f737a2711f3bd1d381abdb41743fff3819b4f76382e1eac`
 
+## Credit
+This application is really just a light-weight REST API wrapper around this [stand-alone SLP validation library](https://github.com/simpleledger/slp-validate) written by the awesome [James Cramer](https://github.com/jcramer).
+
 ## License
 MIT
