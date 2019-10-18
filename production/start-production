@@ -1,3 +1,11 @@
 #!/bin/bash
+
+# Web server state.
 export KOA_ENV=production
+
+# RPC settings
+export RPC_USER_NAME=bitcoin
+export RPC_PASSWORD=password
+export RPC_URL=0.0.0.0:8332
+
 npm start

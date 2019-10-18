@@ -29,9 +29,9 @@ RUN echo 'abcd8765' | sudo -S pwd
 
 # Clone the rest.bitcoin.com repository
 WORKDIR /home/safeuser
-RUN git clone https://github.com/christroutner/koa-api-boilerplate
-RUN mv koa-api-boilerplate koa
-RUN mkdir keys
+RUN git clone https://github.com/christroutner/koa-slp-validation
+RUN mv koa-slp-validation koa
+#RUN mkdir keys
 
 # Switch to the desired branch. `master` is usually stable,
 # and `stage` has the most up-to-date changes.

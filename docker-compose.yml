@@ -1,6 +1,6 @@
 # Start the testnet server with the command 'docker-compose up -d'
 
-koa-mongodb:
+slp-validator-mongodb:
   image: mongo
   container_name: mongo-koa
   ports:
@@ -10,16 +10,16 @@ koa-mongodb:
   command: mongod --smallfiles --logpath=/dev/null # -- quiet
   restart: always
 
-koa:
+slp-validator:
   build: ./production/
   dockerfile: Dockerfile
-  container_name: koa
+  container_name: slp-validator
   links:
-    - koa-mongodb
+    - slp-validator-mongodb
   ports:
     - "5001:5001"  # <host port>:<container port>
-  volumes:
+#  volumes:
 #    - ./logs:/home/coinjoin/consolidating-coinjoin/logs
-    - ./keys:/home/safeuser/keys
+#    - ./keys:/home/safeuser/keys
 
   restart: always
