@@ -44,7 +44,7 @@ class SLP {
       const slpValidator = new ValidatorType1({
         getRawTransaction: async txid => {
           const rawTx = await _this.rpc.getRawTransaction(txid)
-          console.log(`rawTx: ${JSON.stringify(rawTx, null, 2)}`)
+          // console.log(`rawTx: ${JSON.stringify(rawTx, null, 2)}`)
           return rawTx
         }
       })
