@@ -38,7 +38,7 @@ RUN mv koa-slp-validation koa
 WORKDIR /home/safeuser/koa
 
 # For development: switch to unstable branch
-RUN git checkout unstable
+#RUN git checkout unstable
 
 # Install dependencies
 RUN npm install
