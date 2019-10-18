@@ -2,7 +2,7 @@
 
 slp-validator-mongodb:
   image: mongo
-  container_name: mongo-koa
+  container_name: mongo-slp-validator
   ports:
     - "5555:27017" # <host port>:<container port>
   volumes:
