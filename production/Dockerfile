@@ -38,7 +38,7 @@ RUN mv koa-slp-validation koa
 WORKDIR /home/safeuser/koa
 
 # For development: switch to unstable branch
-# RUN git checkout unstable
+RUN git checkout unstable
 
 # Install dependencies
 RUN npm install
@@ -46,7 +46,7 @@ RUN npm install
 # Generate the API docs
 RUN npm run docs
 
-VOLUME /home/safeuser/keys
+#VOLUME /home/safeuser/keys
 
 # Expose the port the API will be served on.
 EXPOSE 5001
