@@ -1,7 +1,7 @@
 {
-  "name": "koa-api-boilerplate",
-  "version": "3.0.0",
-  "description": "Koa2 boilerplate covering essentials for REST API and auth.",
+  "name": "koa-slp-validation",
+  "version": "1.0.0",
+  "description": "A lightweight REST API server for validating SLP token transactions.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -27,10 +27,10 @@
   "author": "Chris Troutner <chris.troutner@gmail.com>",
   "license": "MIT",
   "apidoc": {
-    "title": "koa-api-boilerplate",
-    "url": "localhost:5000"
+    "title": "koa-slp-validation",
+    "url": "localhost:5001"
   },
-  "repository": "christroutner/koa-api-boilerplate",
+  "repository": "christroutner/koa-slp-validation",
   "dependencies": {
     "apidoc": "^0.17.7",
     "bcryptjs": "^2.4.3",
