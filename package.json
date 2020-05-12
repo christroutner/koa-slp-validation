@@ -51,7 +51,7 @@
     "passport-local": "^1.0.0",
     "request": "^2.85.0",
     "request-promise": "^4.2.2",
-    "slp-validate": "^1.0.0",
+    "slp-validate": "^1.2.1",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.0.0"
   },
